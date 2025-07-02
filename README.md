@@ -1,84 +1,74 @@
-# Turborepo starter
+# Turborepo 现代化前端项目
 
-This Turborepo starter is maintained by the Turborepo core team.
+一个基于 Turborepo 构建的现代化前端项目，采用 Monorepo 架构管理多个应用，集成了最新的前端技术栈。
 
-## Using this example
+## 🚀 快速开始
 
-Run the following command:
+### 安装依赖
 
-```sh
-npx create-turbo@latest
+```bash
+pnpm install
 ```
 
-## What's inside?
+### 启动开发服务器
 
-This Turborepo includes the following packages/apps:
+```bash
+# 启动所有应用
+pnpm dev
 
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
+# 或启动特定应用
+pnpm dev --filter=admin
 ```
-cd my-turborepo
+
+### 构建项目
+
+```bash
 pnpm build
 ```
 
-### Develop
-
-To develop all apps and packages, run the following command:
+## 📁 项目结构
 
 ```
-cd my-turborepo
-pnpm dev
+turborepo-app-0507/
+├── apps/
+│   ├── admin/                    # 管理后台应用
+│   ├── web/                      # 前端应用
+│   └── docs/                     # 文档应用
+├── packages/
+│   ├── ui/                       # 共享 UI 组件
+│   ├── eslint-config/            # ESLint 配置
+│   ├── typescript-config/        # TypeScript 配置
+│   └── utils/                    # 工具函数
+└── README.md                     # 项目文档
 ```
 
-### Remote Caching
+## 🛠️ 技术栈
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+- **Monorepo 架构** - 使用 Turborepo 管理多应用项目
+- **React 18** - 最新的 React 特性和最佳实践
+- **TypeScript** - 完整的类型安全
+- **Next.js 14** - 现代化的 React 框架
+- **Ant Design 5.x** - 企业级 UI 组件库
+- **Tailwind CSS** - 原子化 CSS 框架
 
-Turborepo can use a technique known as [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+## 🎯 特色功能
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
+### AntdForm 表单组件
 
-```
-cd my-turborepo
-npx turbo login
-```
+高质量的表单组件，支持多标签页表单、智能错误处理和自动滚动定位。
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+**详细文档：** [AntdForm 组件文档](./apps/admin/app/components/AntdForm/README.md)
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+## 📚 相关文档
 
-```
-npx turbo link
-```
+- [Turborepo 官方文档](https://turborepo.com/docs) - Monorepo 管理指南
+- [Next.js 文档](https://nextjs.org/docs) - React 框架文档
+- [Ant Design 文档](https://ant.design/docs/react/introduce-cn) - UI 组件库文档
 
-## Useful Links
+## 🤝 贡献
 
-Learn more about the power of Turborepo:
+欢迎提交 Issue 和 Pull Request！
 
-- [Tasks](https://turborepo.com/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.com/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.com/docs/reference/configuration)
-- [CLI Usage](https://turborepo.com/docs/reference/command-line-reference)
+## �� 许可证
+
+MIT License
