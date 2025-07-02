@@ -36,7 +36,7 @@ const AntdForm: React.FC = () => {
     }
   }
 
-  const { activeTab, handleTabChange, handleSubmit, handleFinishFailed, resetForm } = useFormTabs({
+  const { activeTab, handleTabChange, handleFinishFailed, resetForm } = useFormTabs({
     tabs: tabsConfig,
     form,
     onFinish: handleFinish,
@@ -45,16 +45,18 @@ const AntdForm: React.FC = () => {
   const tabItems = FORM_CONFIG.map((config) => ({
     key: config.key,
     label: config.title,
-    children: <TabForm config={config} form={form} onFinish={handleFinish} onFinishFailed={handleFinishFailed} />,
+    children: <TabForm config={config} />,
   }))
 
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-md">
       <h2 className="text-2xl font-bold mb-6 text-gray-800">用户信息表单</h2>
 
-      <Tabs activeKey={activeTab} onChange={handleTabChange} defaultActiveKey="1" type="card" size="large" items={tabItems} />
+      <Form form={form} layout="vertical" onFinish={handleFinish} onFinishFailed={handleFinishFailed} autoComplete="off">
+        <Tabs activeKey={activeTab} onChange={handleTabChange} defaultActiveKey="1" type="card" size="large" items={tabItems} />
 
-      <FormActions onSubmit={handleSubmit} onReset={resetForm} loading={loading} />
+        <FormActions onReset={resetForm} loading={loading} />
+      </Form>
     </div>
   )
 }

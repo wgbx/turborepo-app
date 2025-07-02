@@ -59,17 +59,6 @@ export const useFormTabs = ({ tabs, form, onFinishFailed }: UseFormTabsOptions) 
     [activeTab, getTabByField, scrollToErrorField, message, onFinishFailed],
   )
 
-  const handleSubmit = useCallback(() => {
-    form
-      .validateFields()
-      .then(() => {
-        form.submit()
-      })
-      .catch((errorInfo: any) => {
-        handleFinishFailed(errorInfo)
-      })
-  }, [form, handleFinishFailed])
-
   const resetForm = useCallback(() => {
     try {
       form.resetFields()
@@ -82,7 +71,6 @@ export const useFormTabs = ({ tabs, form, onFinishFailed }: UseFormTabsOptions) 
   return {
     activeTab,
     handleTabChange,
-    handleSubmit,
     handleFinishFailed,
     resetForm,
   }

@@ -1,17 +1,13 @@
 import React from 'react'
-import { Form } from 'ui'
-import { TabFormConfig, UserFormData } from '../types'
+import { TabFormConfig } from '../types'
 import { FormField } from './FormField'
 
 interface TabFormProps {
   config: TabFormConfig
-  form: any
-  onFinish: (values: UserFormData) => void
-  onFinishFailed: (errorInfo: any) => void
 }
 
-export const TabForm: React.FC<TabFormProps> = ({ config, form, onFinish, onFinishFailed }) => {
-  const { key, fields } = config
+export const TabForm: React.FC<TabFormProps> = ({ config }) => {
+  const { fields } = config
 
   const renderFields = () => {
     const gridFields = fields.filter((field) => ['input', 'email', 'phone', 'select', 'date'].includes(field.type))
@@ -34,9 +30,5 @@ export const TabForm: React.FC<TabFormProps> = ({ config, form, onFinish, onFini
     )
   }
 
-  return (
-    <Form form={form} name={`${key}Form`} layout="vertical" onFinish={onFinish} onFinishFailed={onFinishFailed} autoComplete="off">
-      {renderFields()}
-    </Form>
-  )
+  return <div className="pt-4">{renderFields()}</div>
 }
