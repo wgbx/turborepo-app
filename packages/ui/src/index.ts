@@ -1,4 +1,4 @@
-import { Button } from 'antd'
 import ThemeProvider from './Provider'
 
-export { ThemeProvider, Button }
+export { ThemeProvider }
+export * from 'antd'
