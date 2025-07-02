@@ -1,4 +1,11 @@
-import { FormInstance } from 'antd'
+// import { FormInstance } from 'antd'
+
+export interface FormInstance {
+  validateFields: () => Promise<any>
+  resetFields: () => void
+  submit: () => void
+  scrollToField: (name: string, options?: any) => void
+}
 
 export interface UserFormData {
   name: string

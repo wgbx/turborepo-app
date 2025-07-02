@@ -59,6 +59,12 @@ turborepo-app-0507/
 
 **详细文档：** [AntdForm 组件文档](./apps/admin/app/components/AntdForm/README.md)
 
+### ReactHookForm 表单组件
+
+基于 react-hook-form + yup 的高性能表单组件，支持多标签页、类型安全校验。
+
+**详细文档：** [ReactHookForm 组件文档](./apps/admin/app/components/ReactHookForm/README.md)
+
 ## 📚 相关文档
 
 - [Turborepo 官方文档](https://turborepo.com/docs) - Monorepo 管理指南
