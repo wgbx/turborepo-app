@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react'
 import { App } from 'ui'
 import { UseFormTabsOptions } from '../types'
 
-export const useFormTabs = ({ tabs, onFinish, onFinishFailed, reset }: UseFormTabsOptions) => {
+export const useFormTabs = ({ tabs, onFinish, onFinishFailed, reset, handleSubmit }: UseFormTabsOptions) => {
   const [activeTab, setActiveTab] = useState<string>(tabs[0]?.key || '1')
   const { message } = App.useApp()
 
@@ -56,19 +56,9 @@ export const useFormTabs = ({ tabs, onFinish, onFinishFailed, reset }: UseFormTa
     [activeTab, getTabByField, scrollToErrorField, message, onFinishFailed],
   )
 
-  const handleSubmit = useCallback(() => {
-    // This will be handled by react-hook-form's handleSubmit
-    // We just need to trigger the form submission
-    const submitButton = document.querySelector('form button[type="submit"]') as HTMLButtonElement
-    if (submitButton) {
-      submitButton.click()
-    }
-  }, [])
-
   const resetForm = useCallback(() => {
     try {
       setActiveTab(tabs[0]?.key || '1')
-      // 调用 react-hook-form 的 reset 函数来重置表单数据
       if (reset) {
         reset()
       }

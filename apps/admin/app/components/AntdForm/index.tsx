@@ -36,6 +36,24 @@ const AntdForm: React.FC = () => {
     }
   }
 
+  const handlePreset = () => {
+    const presetData: UserFormData = {
+      name: '张三',
+      email: 'zhangsan@example.com',
+      phone: '13800138000',
+      role: 'admin',
+      joinDate: '2024-01-15',
+      department: 'tech',
+      description: '这是一段预设的描述信息，用于演示表单的预设功能。',
+      salary: '15000',
+      skills: ['react', 'typescript', 'nodejs'],
+      experience: '5年全栈开发经验，熟悉React、TypeScript、Node.js等技术栈，有丰富的项目管理和团队协作经验。',
+    }
+
+    form.setFieldsValue(presetData)
+    message.success('预设数据已填充！')
+  }
+
   const { activeTab, handleTabChange, handleFinishFailed, resetForm } = useFormTabs({
     tabs: tabsConfig,
     form,
@@ -55,7 +73,7 @@ const AntdForm: React.FC = () => {
       <Form form={form} layout="vertical" onFinish={handleFinish} onFinishFailed={handleFinishFailed} autoComplete="off">
         <Tabs activeKey={activeTab} onChange={handleTabChange} defaultActiveKey="1" type="card" size="large" items={tabItems} />
 
-        <FormActions onReset={resetForm} loading={loading} />
+        <FormActions onReset={resetForm} onPreset={handlePreset} loading={loading} />
       </Form>
     </div>
   )

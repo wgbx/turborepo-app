@@ -11,6 +11,7 @@ export interface UseFormTabsOptions {
   onFinish: (values: UserFormData) => void
   onFinishFailed?: (errorInfo: Record<string, unknown>) => void
   reset?: () => void
+  handleSubmit?: (onSubmit: (data: UserFormData) => void, onError: (errors: any) => void) => void
 }
 
 export interface FormFieldConfig {
@@ -37,7 +38,6 @@ export interface FormValidationError {
   errors: string[]
 }
 
-// Yup schema for form validation
 export const userFormSchema = yup.object({
   name: yup.string().min(2, '姓名至少2个字符！').required('请输入姓名！'),
   email: yup.string().email('请输入有效的邮箱地址！').required('请输入邮箱！'),
@@ -57,5 +57,4 @@ export const userFormSchema = yup.object({
   experience: yup.string().min(1, '请输入工作经验！').required('请输入工作经验！'),
 })
 
-// 使用yup schema推断的类型作为UserFormData
 export type UserFormData = yup.InferType<typeof userFormSchema>

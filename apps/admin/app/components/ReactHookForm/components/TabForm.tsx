@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react'
+import React, { forwardRef, useImperativeHandle } from 'react'
 import { TabFormConfig, UserFormData } from '../types'
 import { FormField } from './FormField'
 import { UseFormRegister, FieldErrors, UseFormSetValue, UseFormWatch, Control, UseFormHandleSubmit } from 'react-hook-form'
@@ -15,18 +15,15 @@ interface TabFormProps {
   onFinishFailed: (errorInfo: Record<string, unknown>) => void
 }
 
-export const TabForm = forwardRef<{ reset: () => void }, TabFormProps>((props) => {
-  const { config, register, errors, setValue, watch, control, handleSubmit, onFinish, onFinishFailed } = props
-  TabForm.displayName = 'TabForm'
+export const TabForm = forwardRef<{ reset: () => void }, TabFormProps>((props, ref) => {
+  const { config, register, errors, setValue, watch, control, onFinish, onFinishFailed } = props
   const { fields } = config
 
-  const onSubmit = (data: UserFormData) => {
-    onFinish(data)
-  }
-
-  const onError = (errors: Record<string, unknown>) => {
-    onFinishFailed(errors)
-  }
+  useImperativeHandle(ref, () => ({
+    reset: () => {
+      console.log('TabForm reset called')
+    },
+  }))
 
   const renderFields = () => {
     const gridFields = fields.filter((field) => ['input', 'email', 'phone', 'select', 'date'].includes(field.type))
@@ -65,10 +62,7 @@ export const TabForm = forwardRef<{ reset: () => void }, TabFormProps>((props) =
     )
   }
 
-  return (
-    <form onSubmit={handleSubmit(onSubmit, onError)} className="space-y-4">
-      {renderFields()}
-      <button type="submit" style={{ display: 'none' }} />
-    </form>
-  )
+  return <div className="space-y-4">{renderFields()}</div>
 })
+
+TabForm.displayName = 'TabForm'

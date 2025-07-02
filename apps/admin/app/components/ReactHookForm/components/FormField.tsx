@@ -29,20 +29,16 @@ export const FormField: React.FC<FormFieldProps> = ({ field, errors, control }) 
           <Controller
             name={name as keyof UserFormData}
             control={control}
-            render={({ field: controllerField }) => {
-              let value = controllerField.value as string | number | undefined
-              if (typeof value !== 'string' && typeof value !== 'number') value = ''
-              return (
-                <Input
-                  {...controllerField}
-                  placeholder={placeholder}
-                  type={type === 'email' ? 'email' : 'text'}
-                  prefix={type === 'salary' ? prefix : undefined}
-                  status={error ? 'error' : undefined}
-                  value={value}
-                />
-              )
-            }}
+            render={({ field: controllerField }) => (
+              <Input
+                {...controllerField}
+                placeholder={placeholder}
+                type={type === 'email' ? 'email' : 'text'}
+                prefix={type === 'salary' ? prefix : undefined}
+                value={controllerField.value as string}
+                status={error ? 'error' : undefined}
+              />
+            )}
           />
         )
       case 'select':
@@ -78,7 +74,7 @@ export const FormField: React.FC<FormFieldProps> = ({ field, errors, control }) 
                 placeholder={placeholder}
                 style={{ width: '100%' }}
                 status={error ? 'error' : undefined}
-                value={controllerField.value ?? undefined}
+                value={controllerField.value}
                 onChange={(date) => controllerField.onChange(date)}
               />
             )}

@@ -1,5 +1,3 @@
-// import { FormInstance } from 'antd'
-
 export interface FormInstance {
   validateFields: () => Promise<any>
   resetFields: () => void

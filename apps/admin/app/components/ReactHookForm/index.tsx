@@ -4,7 +4,9 @@ import React, { useState, useRef } from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { Tabs, App } from 'ui'
-import { UserFormData, TabConfig, userFormSchema } from './types'
+import { USER_FORM_PRESET_DATA, EMPTY_DATA } from 'constant'
+import type { UserFormData, TabConfig } from './types'
+import { userFormSchema } from './types'
 import { FORM_CONFIG } from './constants'
 import { useFormTabs } from './hooks/useFormTabs'
 import { TabForm } from './components/TabForm'
@@ -26,6 +28,7 @@ const ReactHookForm: React.FC = () => {
   } = useForm<UserFormData>({
     resolver: yupResolver(userFormSchema),
     mode: 'onChange',
+    defaultValues: {} as UserFormData,
   })
 
   const tabsConfig: TabConfig[] = FORM_CONFIG.map((config) => ({
@@ -34,10 +37,9 @@ const ReactHookForm: React.FC = () => {
     fields: config.fields.map((field) => field.name),
   }))
 
-  const handleFinish = async (values: UserFormData) => {
+  const handleFinish = async () => {
     try {
       setLoading(true)
-      console.log('表单数据:', values)
 
       await new Promise((resolve) => setTimeout(resolve, 1000))
 
@@ -51,17 +53,21 @@ const ReactHookForm: React.FC = () => {
     }
   }
 
-  const {
-    activeTab,
-    handleTabChange,
-    handleSubmit: handleFormSubmit,
-    handleFinishFailed,
-    resetForm,
-  } = useFormTabs({
+  const handlePreset = () => {
+    reset(USER_FORM_PRESET_DATA, { keepDefaultValues: false })
+    message.success('预设数据已填充！')
+  }
+
+  const { activeTab, handleTabChange, handleFinishFailed } = useFormTabs({
     tabs: tabsConfig,
     onFinish: handleFinish,
     reset,
+    handleSubmit,
   })
+
+  const resetForm = () => {
+    reset(EMPTY_DATA)
+  }
 
   const tabItems = FORM_CONFIG.map((config) => ({
     key: config.key,
@@ -86,9 +92,11 @@ const ReactHookForm: React.FC = () => {
     <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-md">
       <h2 className="text-2xl font-bold mb-6 text-gray-800">用户信息表单 (React Hook Form)</h2>
 
-      <Tabs activeKey={activeTab} onChange={handleTabChange} defaultActiveKey="1" type="card" size="large" items={tabItems} />
+      <form onSubmit={handleSubmit(handleFinish, handleFinishFailed)}>
+        <Tabs activeKey={activeTab} onChange={handleTabChange} defaultActiveKey="1" type="card" size="large" items={tabItems} />
 
-      <FormActions onSubmit={handleFormSubmit} onReset={resetForm} loading={loading} />
+        <FormActions onReset={resetForm} onPreset={handlePreset} loading={loading} />
+      </form>
     </div>
   )
 }
