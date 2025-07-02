@@ -55,7 +55,6 @@ const ReactHookForm: React.FC = () => {
 
   const handlePreset = () => {
     reset(USER_FORM_PRESET_DATA, { keepDefaultValues: false })
-    message.success('预设数据已填充！')
   }
 
   const { activeTab, handleTabChange, handleFinishFailed } = useFormTabs({

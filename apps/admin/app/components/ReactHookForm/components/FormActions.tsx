@@ -17,7 +17,7 @@ export const FormActions: React.FC<FormActionsProps> = ({ onReset, onPreset, loa
         重置
       </Button>
       <Button size="large" onClick={onPreset} disabled={loading}>
-        预设数据
+        预设
       </Button>
     </div>
   )

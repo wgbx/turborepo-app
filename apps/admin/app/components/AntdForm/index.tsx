@@ -1,12 +1,13 @@
 'use client'
 
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Form, Tabs, App } from 'ui'
 import { UserFormData, TabConfig } from './types'
 import { FORM_CONFIG } from './constants'
 import { useFormTabs } from './hooks/useFormTabs'
 import { TabForm } from './components/TabForm'
 import { FormActions } from './components/FormActions'
+import { USER_FORM_PRESET_DATA } from 'constant'
 
 const AntdForm: React.FC = () => {
   const [form] = Form.useForm()
@@ -37,21 +38,7 @@ const AntdForm: React.FC = () => {
   }
 
   const handlePreset = () => {
-    const presetData: UserFormData = {
-      name: '张三',
-      email: 'zhangsan@example.com',
-      phone: '13800138000',
-      role: 'admin',
-      joinDate: '2024-01-15',
-      department: 'tech',
-      description: '这是一段预设的描述信息，用于演示表单的预设功能。',
-      salary: '15000',
-      skills: ['react', 'typescript', 'nodejs'],
-      experience: '5年全栈开发经验，熟悉React、TypeScript、Node.js等技术栈，有丰富的项目管理和团队协作经验。',
-    }
-
-    form.setFieldsValue(presetData)
-    message.success('预设数据已填充！')
+    form.setFieldsValue({ ...USER_FORM_PRESET_DATA })
   }
 
   const { activeTab, handleTabChange, handleFinishFailed, resetForm } = useFormTabs({
