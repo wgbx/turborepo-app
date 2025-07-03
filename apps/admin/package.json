@@ -21,6 +21,7 @@
     "react-hook-form": "^7.59.0",
     "ui": "workspace:*",
     "utils": "workspace:*",
+    "date-range-picker": "workspace:*",
     "yup": "^1.6.1"
   },
   "devDependencies": {
