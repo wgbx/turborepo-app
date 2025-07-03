@@ -175,6 +175,6 @@ pnpm build
 
 欢迎提交 Issue 和 Pull Request！
 
-## �� 许可证
+## 📝 许可证
 
 MIT License

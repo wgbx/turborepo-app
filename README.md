@@ -86,7 +86,9 @@ turborepo-app-0507/
 
 ### ColorPicker 拾色器组件
 
-现代化拾色器，支持吸管工具、预设色板、输入美化等，详见 [@color-picker 说明](./packages/color-picker/README.md)
+现代化拾色器，支持吸管工具、预设色板、输入美化等
+
+**详细文档：** [ColorPicker 组件文档](./packages/color-picker/README.md)
 
 ## 📚 相关文档
 
@@ -98,6 +100,6 @@ turborepo-app-0507/
 
 欢迎提交 Issue 和 Pull Request！
 
-## �� 许可证
+## 📝 许可证
 
 MIT License
