@@ -77,6 +77,12 @@ turborepo-app-0507/
 
 **详细文档：** [ReactQuery 组件文档](./apps/admin/app/components/ReactQuery/README.md)
 
+### Currency 货币处理组件
+
+专注于解决货币处理中的精度问题和格式化需求，提供安全数学运算、货币格式化和转换功能。
+
+**详细文档：** [Currency 组件文档](./apps/admin/app/components/Currency/README.md)
+
 ## 📚 相关文档
 
 - [Turborepo 官方文档](https://turborepo.com/docs) - Monorepo 管理指南

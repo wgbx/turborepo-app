@@ -6,6 +6,7 @@ import AntdForm from '@admin/components/AntdForm'
 import ReactHookForm from '@admin/components/ReactHookForm'
 import VirtualScrollDemo from '@admin/components/VirtualScroll/VirtualScrollDemo'
 import ReactQuery from '@admin/components/ReactQuery'
+import Currency from '@admin/components/Currency'
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState('antd')
@@ -30,6 +31,11 @@ export default function Home() {
       key: 'react-query',
       label: 'React Query',
       children: <ReactQuery />,
+    },
+    {
+      key: 'currency',
+      label: '货币管理',
+      children: <Currency />,
     },
   ]
 
