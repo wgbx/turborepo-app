@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { Tabs } from 'ui'
 import AntdForm from '@admin/components/AntdForm'
 import ReactHookForm from '@admin/components/ReactHookForm'
+import VirtualScrollDemo from '@admin/components/VirtualScroll/VirtualScrollDemo'
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState('antd')
@@ -18,6 +19,11 @@ export default function Home() {
       key: 'react-hook-form',
       label: 'React Hook Form',
       children: <ReactHookForm />,
+    },
+    {
+      key: 'virtual-scroll',
+      label: '虚拟滚动',
+      children: <VirtualScrollDemo />,
     },
   ]
 

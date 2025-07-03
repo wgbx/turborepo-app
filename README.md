@@ -65,6 +65,12 @@ turborepo-app-0507/
 
 **详细文档：** [ReactHookForm 组件文档](./apps/admin/app/components/ReactHookForm/README.md)
 
+### VirtualScroll 虚拟滚动组件
+
+高性能的虚拟滚动组件库，支持大数据量列表渲染，包含用户列表和产品列表等业务组件。
+
+**详细文档：** [VirtualScroll 组件文档](./apps/admin/app/components/VirtualScroll/README.md)
+
 ## 📚 相关文档
 
 - [Turborepo 官方文档](https://turborepo.com/docs) - Monorepo 管理指南
