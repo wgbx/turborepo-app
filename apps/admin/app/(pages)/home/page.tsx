@@ -5,6 +5,7 @@ import { Tabs } from 'ui'
 import AntdForm from '@admin/components/AntdForm'
 import ReactHookForm from '@admin/components/ReactHookForm'
 import VirtualScrollDemo from '@admin/components/VirtualScroll/VirtualScrollDemo'
+import ReactQuery from '@admin/components/ReactQuery'
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState('antd')
@@ -24,6 +25,11 @@ export default function Home() {
       key: 'virtual-scroll',
       label: '虚拟滚动',
       children: <VirtualScrollDemo />,
+    },
+    {
+      key: 'react-query',
+      label: 'React Query',
+      children: <ReactQuery />,
     },
   ]
 
