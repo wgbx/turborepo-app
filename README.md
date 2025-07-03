@@ -71,6 +71,12 @@ turborepo-app-0507/
 
 **详细文档：** [VirtualScroll 组件文档](./apps/admin/app/components/VirtualScroll/README.md)
 
+### ReactQuery 数据管理组件
+
+基于 @tanstack/react-query 的最佳实践组件库，展示数据查询、缓存管理、乐观更新等核心功能。
+
+**详细文档：** [ReactQuery 组件文档](./apps/admin/app/components/ReactQuery/README.md)
+
 ## 📚 相关文档
 
 - [Turborepo 官方文档](https://turborepo.com/docs) - Monorepo 管理指南
