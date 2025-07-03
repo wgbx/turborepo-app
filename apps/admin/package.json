@@ -14,14 +14,16 @@
     "@ant-design/v5-patch-for-react-19": "^1.0.3",
     "@hookform/resolvers": "^5.1.1",
     "@tanstack/react-query": "^5.76.1",
+    "ahooks": "^3.7.6",
+    "color-picker": "workspace:^",
     "constant": "workspace:*",
+    "date-range-picker": "workspace:*",
     "next": "^15.3.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-hook-form": "^7.59.0",
     "ui": "workspace:*",
     "utils": "workspace:*",
-    "date-range-picker": "workspace:*",
     "yup": "^1.6.1"
   },
   "devDependencies": {

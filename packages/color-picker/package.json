@@ -1,0 +1,17 @@
+{
+  "name": "color-picker",
+  "main": "src/index.ts",
+  "dependencies": {
+    "react-colorful": "^5.6.1",
+    "ui": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0"
+  },
+  "peerDependencies": {
+    "react": ">=17.0.0",
+    "react-dom": ">=17.0.0",
+    "ahooks": ">=3.7.6"
+  }
+}

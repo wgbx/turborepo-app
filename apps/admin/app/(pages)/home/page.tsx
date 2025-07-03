@@ -7,6 +7,7 @@ import ReactHookForm from '@admin/components/ReactHookForm'
 import VirtualScrollDemo from '@admin/components/VirtualScroll/VirtualScrollDemo'
 import ReactQuery from '@admin/components/ReactQuery'
 import Currency from '@admin/components/Currency'
+import ColorPickerDemo from '@admin/components/ColorPicker/ColorPickerDemo'
 import { DateRangePicker } from 'date-range-picker'
 
 export default function Home() {
@@ -37,6 +38,11 @@ export default function Home() {
       key: 'currency',
       label: '货币管理',
       children: <Currency />,
+    },
+    {
+      key: 'color-picker',
+      label: '拾色器',
+      children: <ColorPickerDemo />,
     },
     {
       key: 'date-range',
