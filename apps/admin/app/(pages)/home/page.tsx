@@ -9,6 +9,7 @@ import ReactQuery from '@admin/components/ReactQuery'
 import Currency from '@admin/components/Currency'
 import ColorPickerDemo from '@admin/components/ColorPicker/ColorPickerDemo'
 import { DateRangePicker } from 'date-range-picker'
+import JotaiDemo from '@admin/components/JotaiDemo'
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState('antd')
@@ -48,6 +49,11 @@ export default function Home() {
       key: 'date-range',
       label: '日期区间',
       children: <DateRangePicker />,
+    },
+    {
+      key: 'jotai',
+      label: 'Jotai 状态管理',
+      children: <JotaiDemo />,
     },
   ]
 

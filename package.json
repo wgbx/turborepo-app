@@ -29,5 +29,8 @@
   },
   "lint-staged": {
     "*.{ts,tsx,md}": "prettier --write"
+  },
+  "dependencies": {
+    "jotai": "^2.12.5"
   }
 }

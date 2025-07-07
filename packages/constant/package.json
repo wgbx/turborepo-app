@@ -4,7 +4,7 @@
   "private": true,
   "main": "./index.ts",
   "license": "MIT",
-  "dependencies": {
+  "peerDependencies": {
     "dayjs": "^1.11.13"
   }
 }

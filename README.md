@@ -90,6 +90,12 @@ turborepo-app-0507/
 
 **详细文档：** [ColorPicker 组件文档](./packages/color-picker/README.md)
 
+### Jotai 状态管理组件
+
+基于 Jotai 的原子化状态管理组件，展示轻量级状态管理的最佳实践，包括基础状态、异步状态、计算状态、表单状态和完整的 Todo 应用。
+
+**详细文档：** [Jotai 组件文档](./apps/admin/app/components/JotaiDemo/README.md)
+
 ## 📚 相关文档
 
 - [Turborepo 官方文档](https://turborepo.com/docs) - Monorepo 管理指南
