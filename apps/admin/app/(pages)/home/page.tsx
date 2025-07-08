@@ -10,6 +10,7 @@ import Currency from '@admin/components/Currency'
 import ColorPickerDemo from '@admin/components/ColorPicker/ColorPickerDemo'
 // import { DateRangePicker } from 'date-range-picker'
 import JotaiDemo from '@admin/components/JotaiDemo'
+import UseRequestDemo from '@admin/components/UseRequestDemo'
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState('antd')
@@ -54,6 +55,11 @@ export default function Home() {
       key: 'jotai',
       label: 'Jotai 状态管理',
       children: <JotaiDemo />,
+    },
+    {
+      key: 'use-request',
+      label: 'useRequest',
+      children: <UseRequestDemo />,
     },
   ]
 
