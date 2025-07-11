@@ -71,7 +71,7 @@ export default function FormDemo() {
     setErrors({})
   }
 
-  const hasErrors = Object.values(errors).some((error: any) => error)
+  const hasErrors = Object.values(errors).some((error) => error)
 
   return (
     <div className="space-y-6">

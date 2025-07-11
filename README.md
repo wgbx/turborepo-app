@@ -96,6 +96,12 @@ turborepo-app-0507/
 
 **详细文档：** [Jotai 组件文档](./apps/admin/app/components/JotaiDemo/README.md)
 
+### useRequest 请求管理组件
+
+基于 ahooks 的 `useRequest` Hook 组件库，提供完整的异步请求管理解决方案，包括基础请求、轮询、防抖、重试、缓存等核心功能。
+
+**详细文档：** [useRequest 组件文档](./apps/admin/app/components/UseRequestDemo/README.md)
+
 ## 📚 相关文档
 
 - [Turborepo 官方文档](https://turborepo.com/docs) - Monorepo 管理指南
