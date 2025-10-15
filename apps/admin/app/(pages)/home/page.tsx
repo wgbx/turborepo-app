@@ -11,57 +11,69 @@ import ColorPickerDemo from '@admin/components/ColorPicker/ColorPickerDemo'
 // import { DateRangePicker } from 'date-range-picker'
 import JotaiDemo from '@admin/components/JotaiDemo'
 import UseRequestDemo from '@admin/components/UseRequestDemo'
+import IframeDemo from '@admin/components/IframeDemo'
+
+const hidden = true
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState('antd')
+  const [activeTab, setActiveTab] = useState('iframe')
 
   const tabItems = [
     {
       key: 'antd',
       label: 'Ant Design Form',
       children: <AntdForm />,
+      hidden,
     },
     {
       key: 'react-hook-form',
       label: 'React Hook Form',
       children: <ReactHookForm />,
+      hidden,
     },
     {
       key: 'virtual-scroll',
       label: '虚拟滚动',
       children: <VirtualScrollDemo />,
+      hidden,
     },
     {
       key: 'react-query',
       label: 'React Query',
       children: <ReactQuery />,
+      hidden,
     },
     {
       key: 'currency',
       label: '货币管理',
       children: <Currency />,
+      hidden,
     },
     {
       key: 'color-picker',
       label: '拾色器',
       children: <ColorPickerDemo />,
+      hidden,
     },
-    // {
-    //   key: 'date-range',
-    //   label: '日期区间',
-    //   children: <DateRangePicker />,
-    // },
     {
       key: 'jotai',
       label: 'Jotai 状态管理',
       children: <JotaiDemo />,
+      hidden,
     },
     {
       key: 'use-request',
       label: 'useRequest',
       children: <UseRequestDemo />,
+      hidden,
     },
-  ]
+    {
+      key: 'iframe',
+      label: 'Iframe 嵌入',
+      children: <IframeDemo />,
+      hidden: false,
+    },
+  ].filter((item) => !item.hidden)
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
