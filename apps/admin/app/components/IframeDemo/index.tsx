@@ -3,7 +3,9 @@
 import { useState } from 'react'
 import { Tabs } from 'ui'
 import BasicDemo from './BasicDemo'
+import FullscreenDemo from './FullscreenDemo'
 import CommunicationDemo from './CommunicationDemo'
+import ClickDemo from './ClickDemo'
 
 export default function IframeDemo() {
   const [activeTab, setActiveTab] = useState('basic')
@@ -13,6 +15,16 @@ export default function IframeDemo() {
       key: 'basic',
       label: '基础用法',
       children: <BasicDemo />,
+    },
+    {
+      key: 'click',
+      label: '点击用法',
+      children: <ClickDemo />,
+    },
+    {
+      key: 'fullscreen',
+      label: '全屏用法',
+      children: <FullscreenDemo />,
     },
     {
       key: 'communication',
