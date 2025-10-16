@@ -13,23 +13,25 @@ export default function FormDemo() {
 
   const updateField = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
-    // 清除对应字段的错误
     if (errors[field as keyof typeof errors]) {
       setErrors((prev) => ({ ...prev, [field]: '' }))
     }
   }
 
   const validateForm = () => {
-    const newErrors: any = {}
+    const newErrors: {
+      username?: string
+      email?: string
+      password?: string
+      confirmPassword?: string
+    } = {}
 
-    // 用户名验证
     if (!formData.username.trim()) {
       newErrors.username = '用户名不能为空'
     } else if (formData.username.length < 3) {
       newErrors.username = '用户名至少3个字符'
     }
 
-    // 邮箱验证
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!formData.email.trim()) {
       newErrors.email = '邮箱不能为空'
@@ -37,14 +39,12 @@ export default function FormDemo() {
       newErrors.email = '请输入有效的邮箱地址'
     }
 
-    // 密码验证
     if (!formData.password) {
       newErrors.password = '密码不能为空'
     } else if (formData.password.length < 6) {
       newErrors.password = '密码至少6个字符'
     }
 
-    // 确认密码验证
     if (!formData.confirmPassword) {
       newErrors.confirmPassword = '请确认密码'
     } else if (formData.password !== formData.confirmPassword) {
@@ -68,10 +68,15 @@ export default function FormDemo() {
       password: '',
       confirmPassword: '',
     })
-    setErrors({})
+    setErrors({
+      username: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+    })
   }
 
-  const hasErrors = Object.values(errors).some((error: any) => error)
+  const hasErrors = Object.values(errors).some((error) => error)
 
   return (
     <div className="space-y-6">
@@ -80,10 +85,8 @@ export default function FormDemo() {
         <Paragraph>展示如何使用 Jotai 管理表单状态，包括字段值、验证错误和表单操作。</Paragraph>
       </div>
 
-      {/* 表单 */}
       <Card title="用户注册表单" className="shadow-sm">
         <div className="space-y-4">
-          {/* 用户名 */}
           <div>
             <Text strong>用户名：</Text>
             <Input
@@ -95,7 +98,6 @@ export default function FormDemo() {
             {errors.username && <div className="text-red-500 text-sm mt-1">{errors.username}</div>}
           </div>
 
-          {/* 邮箱 */}
           <div>
             <Text strong>邮箱：</Text>
             <Input
@@ -107,7 +109,6 @@ export default function FormDemo() {
             {errors.email && <div className="text-red-500 text-sm mt-1">{errors.email}</div>}
           </div>
 
-          {/* 密码 */}
           <div>
             <Text strong>密码：</Text>
             <Password
@@ -119,7 +120,6 @@ export default function FormDemo() {
             {errors.password && <div className="text-red-500 text-sm mt-1">{errors.password}</div>}
           </div>
 
-          {/* 确认密码 */}
           <div>
             <Text strong>确认密码：</Text>
             <Password
@@ -131,7 +131,6 @@ export default function FormDemo() {
             {errors.confirmPassword && <div className="text-red-500 text-sm mt-1">{errors.confirmPassword}</div>}
           </div>
 
-          {/* 操作按钮 */}
           <Divider />
           <Space>
             <Button type="primary" onClick={handleSubmit}>
@@ -140,12 +139,10 @@ export default function FormDemo() {
             <Button onClick={resetForm}>重置表单</Button>
           </Space>
 
-          {/* 错误提示 */}
           {hasErrors && <Alert message="表单验证失败" description="请检查并修正上述错误" type="error" showIcon />}
         </div>
       </Card>
 
-      {/* 表单状态 */}
       <Card title="表单状态" className="shadow-sm">
         <div className="space-y-4">
           <div>
@@ -160,12 +157,10 @@ export default function FormDemo() {
         </div>
       </Card>
 
-      {/* 代码示例 */}
       <Card title="代码示例" className="shadow-sm">
         <div className="bg-gray-900 text-green-400 p-4 rounded-md overflow-x-auto">
           <pre className="text-sm">
-            {`// 表单状态原子
-const formDataAtom = atom({
+            {`const formDataAtom = atom({
   username: '',
   email: '',
   password: '',
@@ -174,31 +169,24 @@ const formDataAtom = atom({
 
 const formErrorsAtom = atom({})
 
-// 在组件中使用
 const [formData, setFormData] = useAtom(formDataAtom)
 const [errors, setErrors] = useAtom(formErrorsAtom)
 
-// 更新字段
 const updateField = (field: string, value: string) => {
   setFormData(prev => ({ ...prev, [field]: value }))
-  // 清除错误
   if (errors[field]) {
     setErrors(prev => ({ ...prev, [field]: '' }))
   }
 }
 
-// 表单验证
 const validateForm = () => {
   const newErrors: any = {}
-  // 验证逻辑...
   setErrors(newErrors)
   return Object.keys(newErrors).length === 0
 }
 
-// 提交表单
 const handleSubmit = () => {
   if (validateForm()) {
-    // 提交逻辑...
   }
 }`}
           </pre>

@@ -34,7 +34,17 @@ export const formDataAtom = atom({
   confirmPassword: '',
 })
 
-export const formErrorsAtom = atom({})
+export const formErrorsAtom = atom<{
+  username?: string
+  email?: string
+  password?: string
+  confirmPassword?: string
+}>({
+  username: '',
+  email: '',
+  password: '',
+  confirmPassword: '',
+})
 
 // 计算原子 - 基于其他原子的派生状态
 export const completedTodosAtom = atom((get) => {
