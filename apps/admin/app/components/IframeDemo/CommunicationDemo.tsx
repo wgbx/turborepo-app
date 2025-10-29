@@ -11,7 +11,7 @@ export default function CommunicationDemo() {
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
       if (event.data && typeof event.data === 'string') {
-        setReceivedMessages((prev) => [...prev, `收到来自 iframe 的消息: ${event.data}`])
+        setReceivedMessages((prev) => [...prev, `Received message from iframe: ${event.data}`])
       }
     }
 
@@ -22,7 +22,7 @@ export default function CommunicationDemo() {
   const sendMessageToIframe = () => {
     if (iframeRef.current && iframeRef.current.contentWindow) {
       iframeRef.current.contentWindow.postMessage(message, '*')
-      setReceivedMessages((prev) => [...prev, `发送消息到 iframe: ${message}`])
+      setReceivedMessages((prev) => [...prev, `Sent message to iframe: ${message}`])
       setMessage('')
     }
   }
@@ -85,16 +85,16 @@ export default function CommunicationDemo() {
       </head>
       <body>
         <div class="container">
-          <h2>🎯 Iframe 内容页面</h2>
-          <p>这是一个嵌入的页面，可以与父页面进行通信。</p>
+          <h2>🎯 Iframe Content Page</h2>
+          <p>This is an embedded page that can communicate with the parent page.</p>
 
           <div>
-            <input type="text" id="messageInput" placeholder="输入消息发送给父页面" />
-            <button onclick="sendMessage()">发送消息到父页面</button>
+            <input type="text" id="messageInput" placeholder="Enter message to send to parent" />
+            <button onclick="sendMessage()">Send Message to Parent</button>
           </div>
 
           <div style="margin-top: 20px;">
-            <strong>接收到的消息：</strong>
+            <strong>Received Messages:</strong>
             <div id="messages"></div>
           </div>
         </div>
@@ -105,13 +105,13 @@ export default function CommunicationDemo() {
             const message = input.value;
             if (message) {
               window.parent.postMessage(message, '*');
-              addMessageToList('发送: ' + message);
+              addMessageToList('Sent: ' + message);
               input.value = '';
             }
           }
 
           window.addEventListener('message', function(event) {
-            addMessageToList('接收: ' + event.data);
+            addMessageToList('Received: ' + event.data);
           });
 
           function addMessageToList(message) {
@@ -134,26 +134,26 @@ export default function CommunicationDemo() {
 
   return (
     <Space direction="vertical" size="large" style={{ width: '100%' }}>
-      <Card title="Iframe 与父页面通信">
+      <Card title="Iframe Communication with Parent Page">
         <Space direction="vertical" size="middle" style={{ width: '100%' }}>
           <Alert
             message="postMessage API"
-            description="使用 window.postMessage() 实现跨域的 iframe 通信，这是一种安全的通信方式。"
+            description="Use window.postMessage() to implement cross-domain iframe communication, which is a secure communication method."
             type="info"
             showIcon
           />
 
           <div>
-            <Typography.Text strong>发送消息到 Iframe：</Typography.Text>
+            <Typography.Text strong>Send Message to Iframe:</Typography.Text>
             <Space.Compact style={{ width: '100%', marginTop: 8 }}>
               <Input
-                placeholder="输入消息"
+                placeholder="Enter message"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 onPressEnter={sendMessageToIframe}
               />
               <Button type="primary" onClick={sendMessageToIframe}>
-                发送
+                Send
               </Button>
             </Space.Compact>
           </div>
@@ -173,7 +173,7 @@ export default function CommunicationDemo() {
           </div>
 
           <div>
-            <Typography.Text strong>通信日志：</Typography.Text>
+            <Typography.Text strong>Communication Log:</Typography.Text>
             <div
               style={{
                 marginTop: 8,
@@ -185,11 +185,11 @@ export default function CommunicationDemo() {
               }}
             >
               {receivedMessages.length === 0 ? (
-                <Typography.Text type="secondary">暂无消息</Typography.Text>
+                <Typography.Text type="secondary">No messages yet</Typography.Text>
               ) : (
                 receivedMessages.map((msg, index) => (
                   <div key={index} style={{ marginBottom: 8 }}>
-                    <Tag color={msg.includes('发送') ? 'blue' : 'green'}>{msg}</Tag>
+                    <Tag color={msg.includes('Sent') ? 'blue' : 'green'}>{msg}</Tag>
                   </div>
                 ))
               )}
@@ -198,17 +198,17 @@ export default function CommunicationDemo() {
         </Space>
       </Card>
 
-      <Card title="安全性说明">
+      <Card title="Security Guidelines">
         <Space direction="vertical" size="small">
           <Typography.Paragraph>
-            <Typography.Text strong>重要提示：</Typography.Text>
+            <Typography.Text strong>Important Notes:</Typography.Text>
           </Typography.Paragraph>
           <ul style={{ paddingLeft: 20 }}>
-            <li>始终验证消息来源（event.origin）</li>
-            <li>不要信任来自 iframe 的所有数据</li>
-            <li>使用 sandbox 属性限制 iframe 的能力</li>
-            <li>避免在 postMessage 中传递敏感信息</li>
-            <li>考虑使用内容安全策略（CSP）</li>
+            <li>Always verify message origin (event.origin)</li>
+            <li>Do not trust all data from iframe</li>
+            <li>Use sandbox attribute to restrict iframe capabilities</li>
+            <li>Avoid passing sensitive information in postMessage</li>
+            <li>Consider using Content Security Policy (CSP)</li>
           </ul>
         </Space>
       </Card>
