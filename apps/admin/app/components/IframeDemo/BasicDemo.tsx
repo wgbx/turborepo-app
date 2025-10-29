@@ -4,34 +4,34 @@ import { useState } from 'react'
 import { Card, Space, Typography, Input, Button } from 'ui'
 
 export default function BasicDemo() {
-  const [url, setUrl] = useState('http://localhost:3000/')
-  const [currentUrl, setCurrentUrl] = useState('http://localhost:3000/')
+  const [url, setUrl] = useState('https://embed.staging.pear.us/wgbx/post/aaq4ky')
+  const [currentUrl, setCurrentUrl] = useState('https://embed.staging.pear.us/wgbx/post/aaq4ky')
 
   const handleLoadUrl = () => {
     setCurrentUrl(url)
   }
 
   const presetUrls = [
-    { label: 'pear 官网', url: 'https://release.pear.us/' },
-    { label: 'pear admin 官网', url: 'https://release.admin.pear.us/' },
+    { label: 'Pear Official', url: 'https://release.pear.us/' },
+    { label: 'Pear Admin', url: 'https://release.admin.pear.us/' },
   ]
 
   return (
     <Space direction="vertical" size="large" style={{ width: '100%' }}>
-      <Card title="基础 Iframe 嵌入">
+      <Card title="Basic Iframe Embedding">
         <Space direction="vertical" size="middle" style={{ width: '100%' }}>
           <div>
-            <Typography.Text strong>输入网址：</Typography.Text>
+            <Typography.Text strong>Enter URL:</Typography.Text>
             <Space.Compact style={{ width: '100%', marginTop: 8 }}>
-              <Input placeholder="请输入网址" value={url} onChange={(e) => setUrl(e.target.value)} onPressEnter={handleLoadUrl} />
+              <Input placeholder="Please enter URL" value={url} onChange={(e) => setUrl(e.target.value)} onPressEnter={handleLoadUrl} />
               <Button type="primary" onClick={handleLoadUrl}>
-                加载
+                Load
               </Button>
             </Space.Compact>
           </div>
 
           <div>
-            <Typography.Text strong>快捷链接：</Typography.Text>
+            <Typography.Text strong>Quick Links:</Typography.Text>
             <Space wrap style={{ marginTop: 8 }}>
               {presetUrls.map((preset) => (
                 <Button

@@ -26,17 +26,17 @@ export default function IframeDemo() {
   const tabItems = [
     {
       key: 'click',
-      label: '点击用法',
+      label: 'Click Usage',
       children: <ClickDemo closeSignal={shouldCloseIframe} />,
     },
     // {
     //   key: 'fullscreen',
-    //   label: '全屏用法',
+    //   label: 'Fullscreen Usage',
     //   children: <FullscreenDemo />,
     // },
     {
       key: 'communication',
-      label: 'Iframe 通信',
+      label: 'Iframe Communication',
       children: <CommunicationDemo />,
     },
   ]
@@ -44,8 +44,8 @@ export default function IframeDemo() {
   return (
     <div className="max-w-6xl mx-auto p-6 bg-white rounded-lg shadow-md">
       <div className="mb-6">
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">Iframe 嵌入演示</h2>
-        <p className="text-gray-600">展示 iframe 的各种使用场景和最佳实践。</p>
+        <h2 className="text-2xl font-bold text-gray-900 mb-2">Iframe Embedding Demo</h2>
+        <p className="text-gray-600">Demonstrate various use cases and best practices for iframe.</p>
       </div>
 
       <Tabs

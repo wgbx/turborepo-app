@@ -69,7 +69,7 @@ export default function Home() {
     },
     {
       key: 'iframe',
-      label: 'Iframe 嵌入',
+      label: 'Iframe Embedding',
       children: <IframeDemo />,
       hidden: false,
     },
@@ -78,7 +78,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="container mx-auto px-4">
-        <h1 className="text-3xl font-bold text-center mb-8 text-gray-900">管理后台</h1>
+        <h1 className="text-3xl font-bold text-center mb-8 text-gray-900">Admin Portal</h1>
         <div className="max-w-6xl mx-auto">
           <Tabs
             activeKey={activeTab}

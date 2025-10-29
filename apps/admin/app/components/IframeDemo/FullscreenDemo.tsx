@@ -17,8 +17,8 @@ export default function FullscreenDemo() {
   }
 
   const presetUrls = [
-    { label: 'pear 官网', url: 'https://release.pear.us/' },
-    { label: 'pear admin 官网', url: 'https://release.admin.pear.us/' },
+    { label: 'Pear Official', url: 'https://release.pear.us/' },
+    { label: 'Pear Admin', url: 'https://release.admin.pear.us/' },
   ]
 
   if (isFullscreen) {
@@ -44,7 +44,7 @@ export default function FullscreenDemo() {
             zIndex: 10000,
           }}
         >
-          退出全屏
+          Exit Fullscreen
         </Button>
         <iframe
           src={currentUrl}
@@ -63,20 +63,20 @@ export default function FullscreenDemo() {
 
   return (
     <Space direction="vertical" size="large" style={{ width: '100%' }}>
-      <Card title="全屏 Iframe 演示">
+      <Card title="Fullscreen Iframe Demo">
         <Space direction="vertical" size="middle" style={{ width: '100%' }}>
           <div>
-            <Typography.Text strong>输入网址：</Typography.Text>
+            <Typography.Text strong>Enter URL:</Typography.Text>
             <Space.Compact style={{ width: '100%', marginTop: 8 }}>
-              <Input placeholder="请输入网址" value={url} onChange={(e) => setUrl(e.target.value)} onPressEnter={handleLoadUrl} />
+              <Input placeholder="Please enter URL" value={url} onChange={(e) => setUrl(e.target.value)} onPressEnter={handleLoadUrl} />
               <Button type="primary" onClick={handleLoadUrl}>
-                加载
+                Load
               </Button>
             </Space.Compact>
           </div>
 
           <div>
-            <Typography.Text strong>快捷链接：</Typography.Text>
+            <Typography.Text strong>Quick Links:</Typography.Text>
             <Space wrap style={{ marginTop: 8 }}>
               {presetUrls.map((preset) => (
                 <Button
@@ -94,10 +94,10 @@ export default function FullscreenDemo() {
 
           <div>
             <Button type="primary" size="large" onClick={handleFullscreen}>
-              进入全屏
+              Enter Fullscreen
             </Button>
             <Typography.Text type="secondary" style={{ marginLeft: 12 }}>
-              iframe 将占据整个视口，无边框无内边距
+              Iframe will occupy the entire viewport with no borders or padding
             </Typography.Text>
           </div>
 

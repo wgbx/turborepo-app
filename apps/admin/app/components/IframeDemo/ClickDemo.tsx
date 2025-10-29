@@ -10,7 +10,7 @@ interface ClickDemoProps {
 export default function ClickDemo({ closeSignal }: ClickDemoProps) {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isFullscreen, setIsFullscreen] = useState(false)
-  const [url, setUrl] = useState('https://localhost:3000/wgbx/post/uxn5db')
+  const [url, setUrl] = useState('https://embed.staging.pear.us/wgbx/post/aaq4ky')
   const [iframeUrl, setIframeUrl] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
@@ -72,7 +72,7 @@ export default function ClickDemo({ closeSignal }: ClickDemoProps) {
             zIndex: 10000,
           }}
         >
-          退出全屏
+          Exit Fullscreen
         </Button>
         <div style={{ position: 'relative', width: '100%', height: '100%' }}>
           {isLoading && (
@@ -90,7 +90,7 @@ export default function ClickDemo({ closeSignal }: ClickDemoProps) {
                 zIndex: 10,
               }}
             >
-              <Spin size="large" tip="加载中..." />
+              <Spin size="large" tip="Loading..." />
             </div>
           )}
           {iframeUrl && (
@@ -115,26 +115,32 @@ export default function ClickDemo({ closeSignal }: ClickDemoProps) {
 
   return (
     <Space direction="vertical" size="large" style={{ width: '100%' }}>
-      <Card title="点击加载 Iframe">
+      <Card title="Click to Load Iframe">
         <Space direction="vertical" size="middle" style={{ width: '100%' }}>
           <div>
-            <Typography.Text strong>输入网址：</Typography.Text>
-            <Input placeholder="请输入网址" value={url} onChange={(e) => setUrl(e.target.value)} size="large" style={{ marginTop: 8 }} />
+            <Typography.Text strong>Enter URL:</Typography.Text>
+            <Input
+              placeholder="Please enter URL"
+              value={url}
+              onChange={(e) => setUrl(e.target.value)}
+              size="large"
+              style={{ marginTop: 8 }}
+            />
           </div>
 
           <div>
-            <Typography.Text strong>选择打开方式：</Typography.Text>
+            <Typography.Text strong>Choose Opening Method:</Typography.Text>
             <Typography.Paragraph type="secondary" style={{ marginTop: 8 }}>
-              点击按钮后以不同方式加载 iframe
+              Click button to load iframe in different ways
             </Typography.Paragraph>
           </div>
 
           <Space wrap size="middle">
             <Button type="primary" size="large" onClick={handleOpenModal}>
-              以弹窗方式打开
+              Open in Modal
             </Button>
             <Button type="primary" size="large" onClick={handleOpenFullscreen}>
-              以全屏方式打开
+              Open in Fullscreen
             </Button>
           </Space>
         </Space>
@@ -157,7 +163,7 @@ export default function ClickDemo({ closeSignal }: ClickDemoProps) {
                 zIndex: 10,
               }}
             >
-              <Spin size="large" tip="加载中..." />
+              <Spin size="large" tip="Loading..." />
             </div>
           )}
           {iframeUrl && (
