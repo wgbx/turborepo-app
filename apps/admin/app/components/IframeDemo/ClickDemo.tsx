@@ -1,14 +1,25 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Card, Space, Typography, Button, Modal, Spin, Input } from 'ui'
 
-export default function ClickDemo() {
+interface ClickDemoProps {
+  closeSignal?: boolean
+}
+
+export default function ClickDemo({ closeSignal }: ClickDemoProps) {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isFullscreen, setIsFullscreen] = useState(false)
-  const [url, setUrl] = useState('https://embed.staging.pear.us/demi-release/post/48g8aa')
+  const [url, setUrl] = useState('https://localhost:3000/wgbx/post/uxn5db')
   const [iframeUrl, setIframeUrl] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+
+  useEffect(() => {
+    if (closeSignal) {
+      handleCloseModal()
+      handleCloseFullscreen()
+    }
+  }, [closeSignal])
 
   const handleOpenModal = () => {
     setIframeUrl(url)

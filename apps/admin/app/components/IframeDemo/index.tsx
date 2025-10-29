@@ -1,18 +1,33 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { Tabs } from 'ui'
 import CommunicationDemo from './CommunicationDemo'
 import ClickDemo from './ClickDemo'
 
 export default function IframeDemo() {
   const [activeTab, setActiveTab] = useState('click')
+  const [shouldCloseIframe, setShouldCloseIframe] = useState(false)
+
+  const handleMessage = useCallback((event: MessageEvent) => {
+    if (event.data.type === 'CLOSE_IFRAME') {
+      setShouldCloseIframe(true)
+      setTimeout(() => setShouldCloseIframe(false), 100)
+    }
+  }, [])
+
+  useEffect(() => {
+    window.addEventListener('message', handleMessage)
+    return () => {
+      window.removeEventListener('message', handleMessage)
+    }
+  }, [handleMessage])
 
   const tabItems = [
     {
       key: 'click',
       label: '点击用法',
-      children: <ClickDemo />,
+      children: <ClickDemo closeSignal={shouldCloseIframe} />,
     },
     // {
     //   key: 'fullscreen',
