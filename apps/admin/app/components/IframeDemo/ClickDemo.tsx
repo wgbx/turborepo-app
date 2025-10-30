@@ -104,8 +104,29 @@ export default function ClickDemo({ closeSignal }: ClickDemoProps) {
                 display: isLoading ? 'none' : 'block',
               }}
               title="Fullscreen Iframe"
-              sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-modals"
-              allow="camera; microphone; geolocation"
+              allow="
+              accelerometer;
+              autoplay;
+              camera;
+              clipboard-read;
+              clipboard-write;
+              display-capture;
+              encrypted-media;
+              fullscreen;
+              geolocation;
+              gyroscope;
+              microphone;
+              midi;
+              payment;
+              picture-in-picture;
+              publickey-credentials-get;
+              usb;
+              vr;
+              xr-spatial-tracking;
+              popups;
+              popups-to-escape-sandbox
+            "
+              sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-modals allow-presentation allow-downloads"
             />
           )}
         </div>
