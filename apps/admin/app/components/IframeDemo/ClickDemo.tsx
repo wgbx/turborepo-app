@@ -10,7 +10,7 @@ interface ClickDemoProps {
 export default function ClickDemo({ closeSignal }: ClickDemoProps) {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isFullscreen, setIsFullscreen] = useState(false)
-  const [url, setUrl] = useState('https://embed.staging.pear.us/wgbx/post/aaq4ky')
+  const [url, setUrl] = useState('https://staging.pear.us/wgbx/post/add-event-details-117')
   const [iframeUrl, setIframeUrl] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
