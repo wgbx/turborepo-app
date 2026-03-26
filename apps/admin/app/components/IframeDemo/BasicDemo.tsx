@@ -4,8 +4,8 @@ import { useState } from 'react'
 import { Card, Space, Typography, Input, Button } from 'ui'
 
 export default function BasicDemo() {
-  const [url, setUrl] = useState('https://staging.pear.us/wgbx/post/add-event-details-117')
-  const [currentUrl, setCurrentUrl] = useState('https://staging.pear.us/wgbx/post/add-event-details-117')
+  const [url, setUrl] = useState('https://embed.staging.pear.us/wgbx/post/add-event-details-117')
+  const [currentUrl, setCurrentUrl] = useState('https://embed.staging.pear.us/wgbx/post/add-event-details-117')
 
   const handleLoadUrl = () => {
     setCurrentUrl(url)

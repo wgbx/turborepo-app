@@ -10,7 +10,7 @@ interface ClickDemoProps {
 export default function ClickDemo({ closeSignal }: ClickDemoProps) {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isFullscreen, setIsFullscreen] = useState(false)
-  const [url, setUrl] = useState('https://staging.pear.us/wgbx/post/add-event-details-117')
+  const [url, setUrl] = useState('https://embed.staging.pear.us/wgbx/post/add-event-details-117')
   const [iframeUrl, setIframeUrl] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
@@ -187,21 +187,21 @@ export default function ClickDemo({ closeSignal }: ClickDemoProps) {
               <Spin size="large" tip="Loading..." />
             </div>
           )}
-          {iframeUrl && (
-            <iframe
-              src={iframeUrl}
-              onLoad={handleIframeLoad}
-              style={{
-                width: '100%',
-                height: '70vh',
-                border: 'none',
-                display: isLoading ? 'none' : 'block',
-              }}
-              title="Modal Iframe"
-              sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-modals"
-              allow="camera; microphone; geolocation"
-            />
-          )}
+          <iframe
+            src={iframeUrl}
+            onLoad={handleIframeLoad}
+            style={{
+              width: '100%',
+              height: '70vh',
+              border: 'none',
+              visibility: isModalOpen ? 'visible' : 'hidden', // 用 visibility，不要用 display
+              position: isModalOpen ? 'static' : 'absolute',
+              left: isModalOpen ? 'auto' : '-9999px',
+            }}
+            title="Modal Iframe"
+            sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-modals"
+            allow="camera; microphone; geolocation"
+          />
         </div>
       </Modal>
     </Space>
